@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 //per instructions
+var fs = require("fs");
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 //added to format table 
@@ -100,13 +101,17 @@ if (process.argv[2] == 'concert-this' ) {
     });
 
 } else if ( process.argv[2] == 'do-what-it-says') {
-    console.log('do what it says')
-}
-   
-//  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-//     if (err) {
-//       return console.log('Error occurred: ' + err);
-//     }
-   
-//   console.log(data); 
-//   });
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        if (error) {
+          return console.log(error);
+        }
+        console.log(data);
+        var dataArr = data.split(",");
+        songName = dataArr[1];
+        spotify.search();
+       
+      });
+        
+      };
+
