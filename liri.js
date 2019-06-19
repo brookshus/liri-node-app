@@ -44,7 +44,7 @@ if (process.argv[2] == 'concert-this' ) {
     var songName = process.argv.slice(3).join(" ");
 
     if (songName == undefined) {
-        songName = "The sign by Ace of Base";
+        songName = "Kill Somebody";
     } 
    
 
@@ -53,7 +53,7 @@ if (process.argv[2] == 'concert-this' ) {
             return console.log('Error occurred: ' + err);
             }
 
-            var tableArray = [];
+            //var tableArray = [];
 
             for (var i = 0; i < data.tracks.items.length; i++ ) {
                 var result = {
@@ -62,30 +62,26 @@ if (process.argv[2] == 'concert-this' ) {
                     song_name : data.tracks.items[i].name,
                     preview_url : data.tracks.items[i].preview_url 
                 }
-                tableArray.push(result);
+                //tableArray.push(result);
             }
       
             
-            var table = cTable.getTable(tableArray);
+           // var table = cTable.getTable(tableArray);
     
-            console.log(table);
+           console.log("Artist:" + result.artist);
+           console.log("Album name:"+result.album_name);
+           console.log("Song Name:"+ result.song_name);
+           console.log("URL:"+ result.preview_url);
+           
 
        
     });
 
-
-
-
-
-
-
-
-// If no song is provided then your program will default to "The Sign" by Ace of Base.
 } else if ( process.argv[2] == 'movie-this') {
     var movieName = process.argv.slice(3).join(" ");
 
     if (movieName == undefined) {
-        movieName = "Mr. Nobody";
+        movieName = "The Notebook";
     } 
 
     request('http://www.omdbapi.com/?i=tt3896198&apikey=55e8eecb&t=' + process.argv[3], function (error, response, body) {
@@ -94,9 +90,10 @@ if (process.argv[2] == 'concert-this' ) {
         console.log("Title :" + result.Title);
         console.log("Year :" + result.Released);
         console.log("IMDB Rating :" + result.imdbRating );
-        console.log("Rotten Tomatoes :" + result.Ratings[1].Value);
+        //console.log("Rotten Tomatoes :" + result.Ratings[1].Value);
         console.log("Country :" +  result.Country);
         console.log("Language :" + result.Language);
+        
         console.log("Movie Plot :" + result.Plot);
         console.log("Actors :" +  result.Actors);
 
