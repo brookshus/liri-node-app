@@ -46,9 +46,10 @@ if (process.argv[2] == 'concert-this' ) {
 
     if (songName == undefined) {
         songName = "Kill Somebody";
-    } 
+    }; 
    
-
+    function MusicSearch(songName){
+        
      spotify.search({ type: 'track', query: songName, limit: 10  }, function(err, data) {
             if (err) {
             return console.log('Error occurred: ' + err);
@@ -77,7 +78,7 @@ if (process.argv[2] == 'concert-this' ) {
 
        
     });
-
+};
 } else if ( process.argv[2] == 'movie-this') {
     var movieName = process.argv.slice(3).join(" ");
 
@@ -109,7 +110,8 @@ if (process.argv[2] == 'concert-this' ) {
         console.log(data);
         var dataArr = data.split(",");
         songName = dataArr[1];
-        spotify.search();
+        MusicSearch(songName);
+        
        
       });
         
